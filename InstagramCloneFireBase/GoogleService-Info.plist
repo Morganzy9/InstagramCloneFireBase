@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAPVeH9FDWjRucAE7EH_rTIpr3iO-UWiKg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>230292174391</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.IslamCrew.InstagramCloneFireBase</string>
+	<key>PROJECT_ID</key>
+	<string>instagramclonefirebase-c7f78</string>
+	<key>STORAGE_BUCKET</key>
+	<string>instagramclonefirebase-c7f78.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:230292174391:ios:d5999734c6fa44db5171b2</string>
+</dict>
+</plist>
