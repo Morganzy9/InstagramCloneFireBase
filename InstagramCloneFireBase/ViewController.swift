@@ -7,9 +7,10 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var emailTextField: UITextField!
     
     @IBOutlet var passwordTextField: UITextField!
@@ -21,35 +22,34 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     @IBAction func signInButtonClicked(_ sender: Any) {
         
-        if emailTextField.text! != "" && passwordTextField.text! != "" {
+        
+        guard let email = emailTextField.text, !email.isEmpty , let password = passwordTextField.text , !password.isEmpty else {
             
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { authDataResult, error in
-                
-                if error != nil {
-                    
-                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Unlnown Error occurs")
-                    
-                } else {
-                    
-                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
-                    
-                }
-                
-            }
+            makeAlert(title: "Error", message: "Missing Email/Password")
             
-            
-            
-        } else {
-            
-            makeAlert(title: "Empty Email or Password", message: "Please Enter the Email and Password")
+            return
             
         }
- 
         
-        performSegue(withIdentifier: "toFeedVC", sender: nil)
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            
+            if  error != nil {
+                
+//                IF Error occurs
+                
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error" )
+                
+            } else {
+                
+                
+                self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+            }
+        }
+        
         
         
     }
@@ -60,13 +60,15 @@ class ViewController: UIViewController {
                 
                 if error != nil {
                     
+//                    IF Error occurs
+                    
                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Unknown Error occurs")
                     
                 }
                 
                 
                 self.performSegue(withIdentifier: "toFeedVC", sender: nil)
-
+                
             }
             
         } else {
@@ -92,6 +94,8 @@ class ViewController: UIViewController {
         present(alert, animated: true)
         
     }
+    
+    
     
 }
 
