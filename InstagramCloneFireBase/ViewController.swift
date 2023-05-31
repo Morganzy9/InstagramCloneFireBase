@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         
         
     }
@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     @IBAction func signUpButtonClicked(_ sender: Any) {
         
         if emailTextField.text! != "" && passwordTextField.text! != "" {
+            
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authDataResult, error in
                 
                 if error != nil {
@@ -64,10 +65,12 @@ class ViewController: UIViewController {
                     
                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Unknown Error occurs")
                     
+                } else {
+                    
+                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                    
                 }
                 
-                
-                self.performSegue(withIdentifier: "toFeedVC", sender: nil)
                 
             }
             

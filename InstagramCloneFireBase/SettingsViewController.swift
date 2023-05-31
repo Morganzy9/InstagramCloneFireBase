@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
     
@@ -44,17 +45,75 @@ class SettingsViewController: UIViewController {
             logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logOutButton.heightAnchor.constraint(equalToConstant: 50),
             logOutButton.widthAnchor.constraint(equalToConstant: 280)
-              
+            
         ])
         
-       
+        
         
     }
     
     
     @objc func logOut() {
         
-        performSegue(withIdentifier: "ToSingVC", sender: nil)
+        
+        /*
+         
+         do {
+            
+            try Auth.auth().signOut()
+         
+            performSegue(withIdentifier: "ToSignVC", comlition: nil)
+         
+         } catch {
+            
+            
+         
+         }
+         
+         */
+        
+        
+        do {
+            
+            //            try Auth.auth().signOut()
+            //      MARK: Warning Occurs
+            //
+            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //
+            //            let signVC = storyboard.instantiateViewController(withIdentifier: "SignID") as! ViewController
+            //
+            //            UIApplication.shared.windows.first?.rootViewController = signVC
+            
+            
+            try Auth.auth().signOut()
+            
+            // Redirect to the login view controller
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               
+               let delegate = windowScene.delegate as? SceneDelegate,
+               
+                let window = delegate.window {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let signVC = storyboard.instantiateViewController(withIdentifier: "SignID") as! ViewController
+                
+                window.rootViewController = signVC
+            }
+            
+            
+            
+        } catch let error as NSError {
+            
+            let alert =  UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            
+            let okButton = UIAlertAction(title: "Ok", style: .default)
+            
+            alert.addAction(okButton)
+            
+            present(alert, animated: true)
+            
+        }
         
     }
     

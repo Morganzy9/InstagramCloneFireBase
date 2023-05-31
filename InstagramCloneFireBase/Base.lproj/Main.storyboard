@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +13,7 @@
             <objects>
                 <viewController id="j36-k9-bke" customClass="UploadViewController" customModule="InstagramCloneFireBase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="42W-Cu-i3o">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="eDf-fK-yOz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -28,7 +29,7 @@
             <objects>
                 <viewController id="C12-eK-c1Y" customClass="SettingsViewController" customModule="InstagramCloneFireBase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rgb-0R-XjE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zRg-bA-1M7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,7 +48,7 @@
             <objects>
                 <viewController id="ROd-0I-YH2" customClass="FeedViewController" customModule="InstagramCloneFireBase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ns0-OL-aPo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="wTi-qa-k51"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -61,7 +62,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mhp-wu-lGu">
             <objects>
-                <tabBarController id="W9a-wm-wgZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="W9a-wm-wgZ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="L9a-km-hDj"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Em-te-5O5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -81,29 +82,29 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstagramCloneFireBase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignID" id="BYZ-38-t0r" customClass="ViewController" customModule="InstagramCloneFireBase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I2A-TY-i1U">
-                                <rect key="frame" x="25" y="122" width="550" height="34"/>
+                                <rect key="frame" x="25" y="181" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAs-fZ-ctG">
-                                <rect key="frame" x="25" y="196" width="550" height="34"/>
+                                <rect key="frame" x="25" y="255" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram Clone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGP-HS-ENJ">
-                                <rect key="frame" x="164.66666666666666" y="10" width="270.66666666666674" height="72"/>
+                                <rect key="frame" x="61.333333333333343" y="69" width="270.66666666666663" height="72"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
                                 <color key="textColor" systemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMP-ay-mML">
-                                <rect key="frame" x="80" y="310" width="440" height="50"/>
+                                <rect key="frame" x="80" y="369" width="233" height="50"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sIj-hd-JfO"/>
@@ -118,7 +119,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DII-MJ-0aL">
-                                <rect key="frame" x="80" y="400" width="440" height="50"/>
+                                <rect key="frame" x="80" y="459" width="233" height="50"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cmg-D8-xh1"/>
