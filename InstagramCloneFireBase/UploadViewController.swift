@@ -7,9 +7,10 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 
-class UploadViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class UploadViewController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
     
@@ -40,7 +41,51 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     @IBAction func postImageButtonTapped(_ sender: Any) {
         
-
+        let storage = Storage.storage()
+        
+        let storageRef = storage.reference()
+        
+        let mediaFolder = storageRef.child("media")
+        
+        if let data = imageView.image?.jpegData(compressionQuality: 0.5) {
+            
+            let uuid = UUID().uuidString
+            
+            let imageRef = mediaFolder.child("\(uuid).jpg")
+            
+            imageRef.putData(data) { (storageMetaData, error) in
+                
+                if error != nil {
+                    
+                    print(error?.localizedDescription ?? "LOL")
+                    
+                } else {
+                    
+                    imageRef.downloadURL { url, error in
+                        
+                        if error == nil {
+                                
+//                        MARK:  DATABASE
+                            
+                            let imageUrl = url?.absoluteString
+                            
+                            print(imageUrl ?? "None")
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+                
+                
+            }
+            
+        }
+        
+        
         
         
     }
