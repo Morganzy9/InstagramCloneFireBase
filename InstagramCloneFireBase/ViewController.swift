@@ -47,6 +47,7 @@ class ViewController: UIViewController {
                 
                 
                 self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                
             }
         }
         

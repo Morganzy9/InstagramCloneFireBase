@@ -68,8 +68,39 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate , 
 //                        MARK:  DATABASE
                             
                             let imageUrl = url?.absoluteString
+
                             
-                            print(imageUrl ?? "None")
+                            let firestoreDataBase = Firestore.firestore()
+                            
+                            var firestoreRef : DocumentReference? = nil
+                            
+                            let firestorePost = [ "imageUrl" : imageUrl!,
+                                                  "postBy" : Auth.auth().currentUser?.email as Any,
+                                                  "postComment" : self.textField.text!,
+                                                  "date" : FieldValue.serverTimestamp(),
+                                                  "likes" : 0,
+                            ] as [String : Any]
+                            
+                            firestoreRef = firestoreDataBase.collection("Posts").addDocument(data: firestorePost, completion: { error in
+                                
+                                if error != nil {
+                                    
+                                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Unknown Error")
+                                    
+                                } else {
+                                    
+                                    self.imageView.image = UIImage(systemName: "square.and.arrow.up.on.square")
+                                    self.textField.text = ""
+                                    
+                                    self.tabBarController?.selectedIndex = 0
+                                    
+                                }
+                                
+                                
+                            })
+                            
+                            
+                            
                             
                             
                         }
@@ -113,10 +144,23 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate , 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         imageView.image = info[.originalImage] as? UIImage
+        
         postImageButton.isEnabled = true
+        
         self.dismiss(animated: true)
         
     }
     
+    func makeAlert(title : String, message : String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Ok", style: .default)
+        
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+        
+    }
 
 }
