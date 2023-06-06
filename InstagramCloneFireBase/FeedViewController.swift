@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SDWebImage
+
 
 class FeedViewController: UIViewController {
 
@@ -35,10 +37,6 @@ class FeedViewController: UIViewController {
 
     func getDataFromFireStore() {
         
-        userEmailArray.removeAll()
-        imageArray.removeAll()
-        likeLabelArray.removeAll()
-        userCommetArray.removeAll()
         
         let firestoreDataBase = Firestore.firestore()
         
@@ -61,6 +59,11 @@ class FeedViewController: UIViewController {
                 }
                 
                 if querySnapshot?.isEmpty == false && querySnapshot != nil {
+                    
+                    self.userEmailArray.removeAll(keepingCapacity: false)
+                    self.imageArray.removeAll(keepingCapacity: false)
+                    self.likeLabelArray.removeAll(keepingCapacity: false)
+                    self.userCommetArray.removeAll(keepingCapacity: false)
                     
                     for document in documents {
                          
@@ -156,10 +159,10 @@ extension FeedViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
-        cell.postImage.image = UIImage(systemName: "doc.richtext")
         cell.likeLabel.text = String(likeLabelArray[indexPath.row])
         cell.commentLabel.text = userCommetArray[indexPath.row]
         cell.userEmailLabel.text = userEmailArray[indexPath.row]
+        cell.postImage.sd_setImage(with: URL(string: imageArray[indexPath.row]))
         
         
         return cell
