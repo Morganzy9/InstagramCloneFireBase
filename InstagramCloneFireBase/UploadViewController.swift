@@ -18,7 +18,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate , 
     
     @IBOutlet var postImageButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,7 +71,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate , 
                             
                             let firestoreDataBase = Firestore.firestore()
                             
-                            var firestoreRef : DocumentReference? = nil
+//                            var firestoreRef : DocumentReference? = nil
                             
                             let firestorePost = [ "imageUrl" : imageUrl!,
                                                   "postBy" : Auth.auth().currentUser?.email as Any,
@@ -81,7 +80,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate , 
                                                   "likes" : 0,
                             ] as [String : Any]
                             
-                            firestoreRef = firestoreDataBase.collection("Posts").addDocument(data: firestorePost, completion: { error in
+                            var firestoreRef : DocumentReference? = firestoreDataBase.collection("Posts").addDocument(data: firestorePost, completion: { error in
                                 
                                 if error != nil {
                                     
