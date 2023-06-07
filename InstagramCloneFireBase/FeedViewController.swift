@@ -20,6 +20,7 @@ class FeedViewController: UIViewController {
     var userCommetArray = [String]()
     var likeLabelArray = [Int]()
     var imageArray = [String]()
+    var documentIdArray = [String]()
     
     
     
@@ -40,7 +41,9 @@ class FeedViewController: UIViewController {
         
         let firestoreDataBase = Firestore.firestore()
         
-        firestoreDataBase.collection("Posts").addSnapshotListener { querySnapshot, error in
+        firestoreDataBase.collection("Posts").order(by: "date", descending: true)
+            
+            .addSnapshotListener { querySnapshot, error in
             
             if error != nil {
                 
@@ -64,8 +67,13 @@ class FeedViewController: UIViewController {
                     self.imageArray.removeAll(keepingCapacity: false)
                     self.likeLabelArray.removeAll(keepingCapacity: false)
                     self.userCommetArray.removeAll(keepingCapacity: false)
+                    self.documentIdArray.removeAll(keepingCapacity: false)
                     
                     for document in documents {
+                        
+                        let documentId = document.documentID
+                        
+                        self.documentIdArray.append(documentId)
                          
                         guard let postedby = document.get("postBy") as? String else {
 
@@ -156,14 +164,15 @@ extension FeedViewController : UITableViewDataSource {
     }
     
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
+        
         cell.likeLabel.text = String(likeLabelArray[indexPath.row])
         cell.commentLabel.text = userCommetArray[indexPath.row]
         cell.userEmailLabel.text = userEmailArray[indexPath.row]
         cell.postImage.sd_setImage(with: URL(string: imageArray[indexPath.row]))
-        
+        cell.documentIdLabel.text = documentIdArray[indexPath.row]
         
         return cell
     }

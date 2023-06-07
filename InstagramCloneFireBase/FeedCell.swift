@@ -20,12 +20,12 @@ class FeedCell: UITableViewCell {
     
     @IBOutlet var postImage: UIImageView!
     
+    var documentIdLabel = UILabel()
+    
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
         
         
     }
@@ -38,7 +38,25 @@ class FeedCell: UITableViewCell {
 
     @IBAction func likeButtonClicked(_ sender: Any) {
         
+        let fireStoreDataBase = Firestore.firestore()
         
+        guard let docID = documentIdLabel.text else {
+            
+            print("Error in ID")
+            
+            return
+        }
+        
+        guard let likeCount = Int(likeLabel.text!) else {
+            
+            print("Error in likeCount")
+            
+            return
+        }
+        
+        let likeStore = ["likes" : likeCount + 1] as [String : Any]
+        
+        fireStoreDataBase.collection("Posts").document(docID).setData(likeStore, merge: true)
         
         
     }
