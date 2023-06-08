@@ -11,7 +11,7 @@ FireBase:
 - Accessing to DataBae(FireBase) to change parameters in real time \(LikeButton)
 
 DownLoad Images from FireBase: 
-- SDWebImage
+- import SDWebImage
 
 
 ## Contributing
